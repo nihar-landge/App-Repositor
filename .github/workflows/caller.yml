@@ -27,7 +27,8 @@ jobs:
     uses: nihar-landge/shared-workflows/.github/workflows/docker-ci.yml@v1.0.0
     with:
       image_name: my-app
-      tag: prob-v1.0.0
+      tag: prod-v1.0.0
+      
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
