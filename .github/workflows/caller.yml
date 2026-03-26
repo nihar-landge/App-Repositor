@@ -23,11 +23,11 @@ jobs:
 
   # On main branch → tag as prod-v1.0.0
   production:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
     uses: nihar-landge/shared-workflows/.github/workflows/docker-ci.yml@v1.0.0
     with:
       image_name: my-app
-      tag: v1.0.0
+      tag: prob-v1.0.0
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
