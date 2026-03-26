@@ -3,7 +3,7 @@ name: Caller Workflow
 on:
   push:
     branches:
-      - main
+      - master
       - develop
 
 jobs:
