@@ -1,0 +1,31 @@
+name: Caller Workflow
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+
+  # On develop branch → tag as staging-<sha>
+  staging:
+    if: github.ref == 'refs/heads/develop'
+    uses: nihar-landge/shared-workflows/.github/workflows/docker-ci.yml@v1.0.0
+    with:
+      image_name: my-app
+      tag: staging-${{ github.sha }}
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+  # On main branch → tag as prod-v1.0.0
+  production:
+    if: github.ref == 'refs/heads/main'
+    uses: nihar-landge/shared-workflows/.github/workflows/docker-ci.yml@v1.0.0
+    with:
+      image_name: my-app
+      tag: prod-v1.0.0
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
